@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MM Spray Works | Bespoke Glass Splashbacks & Surface Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #0f172a; background-color: #fcfcfc; overflow-x: hidden; }
+        .reveal { opacity: 0; transform: translateY(30px); }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.6); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.03);
+        }
+        .crystal-nav { 
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: saturate(180%) blur(15px); 
+        }
+        .hero-mesh {
+            background-color: #ffffff;
+            background-image: radial-gradient(at 0% 0%, hsla(210,100%,98%,1) 0, transparent 50%), 
+                              radial-gradient(at 100% 100%, hsla(200,100%,97%,1) 0, transparent 50%);
+        }
+        .btn-glass {
+            background: #0f172a;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-glass:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.15);
+        }
+        /* Glass selection effect */
+        .glass-slot {
+            transition: all 0.5s ease;
+            border: 2px solid transparent;
+        }
+        .glass-slot:hover {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.02);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 crystal-nav border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 border-2 border-slate-900 flex items-center justify-center font-bold text-lg">M</div>
+                <span class="font-bold tracking-tight text-xl">MM Spray Works</span>
+            </div>
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#services" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Surfaces</a>
+                <a href="#process" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Our Process</a>
+                <a href="#quote" class="bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-semibold btn-glass">Request Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-screen flex items-center hero-mesh px-6 pt-20">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="z-10">
+                <div id="hero-tag" class="reveal inline-flex items-center gap-2 px-3 py-1 mb-6 text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase border border-slate-200 rounded">
+                    Artisan Surface Engineering
+                </div>
+                <h1 id="hero-title" class="reveal text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-8">
+                    Elevating interiors with <span class="text-slate-400">bespoke glass.</span>
+                </h1>
+                <p id="hero-para" class="reveal text-lg text-slate-500 mb-10 leading-relaxed max-w-lg">
+                    MM Spray Works specializes in custom-coloured glass splashbacks and high-performance surface finishes for modern kitchens and commercial spaces.
+                </p>
+                <div id="hero-btns" class="reveal flex flex-wrap gap-4">
+                    <a href="#quote" class="bg-slate-900 text-white px-10 py-4 rounded-xl font-bold text-lg btn-glass">Book Measurement</a>
+                    <a href="#services" class="bg-white border border-slate-200 text-slate-600 px-10 py-4 rounded-xl font-bold text-lg btn-glass">View Gallery</a>
+                </div>
+            </div>
+            <div class="reveal relative">
+                <div class="aspect-square bg-slate-50 rounded-[60px] relative overflow-hidden shadow-2xl border border-white">
+                    <!-- Visual representation of layered glass -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 opacity-50"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 glass-card rounded-3xl p-8 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="h-1 w-20 bg-slate-900"></div>
+                            <p class="text-2xl font-bold text-slate-800">RAL 7016</p>
+                            <p class="text-slate-400 uppercase text-[10px] font-bold tracking-widest">Anthracite Grey Finish</p>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div class="text-[10px] font-bold text-slate-400">TOUGHENED<br>6MM OPTIWHITE</div>
+                            <div class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-300">✦</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / System -->
+    <section id="services" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24 reveal">
+                <h2 class="text-4xl font-bold tracking-tight mb-4">Precision-crafted surfaces.</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">From heat-resistant kitchen splashbacks to branded commercial glass, we provide a finish that is both beautiful and indestructible.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="reveal glass-card p-10 rounded-[40px] glass-slot">
+                    <div class="text-3xl mb-6">🍳</div>
+                    <h3 class="text-xl font-bold mb-3">Kitchen Splashbacks</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Toughened safety glass matched to any RAL, Farrow & Ball, or Dulux colour.</p>
+                </div>
+                <div class="reveal glass-card p-10 rounded-[40px] glass-slot">
+                    <div class="text-3xl mb-6">🏢</div>
+                    <h3 class="text-xl font-bold mb-3">Commercial Finishes</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Branded glass wall cladding for offices, hotels, and retail environments.</p>
+                </div>
+                <div class="reveal glass-card p-10 rounded-[40px] glass-slot">
+                    <div class="text-3xl mb-6">🛠️</div>
+                    <h3 class="text-xl font-bold mb-3">Bespoke Spraying</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Expert surface coating for furniture, cabinetry, and architectural elements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Measurement Booking (The System) -->
+    <section id="quote" class="py-32 bg-slate-900 text-white rounded-[60px] mx-6 mb-6">
+        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <h2 class="text-5xl font-bold tracking-tight mb-8">Ready to transform your space?</h2>
+                <p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                    Book a laser-precision measurement session. Our technician will visit, provide sample swatches, and give you an instant quote.
+                </p>
+                <div class="flex items-center gap-6">
+                    <div class="flex -space-x-4">
+                        <div class="w-12 h-12 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center">👤</div>
+                        <div class="w-12 h-12 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center">👤</div>
+                        <div class="w-12 h-12 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center">👤</div>
+                    </div>
+                    <p class="text-sm font-medium text-slate-300">12 Appointments booked this week</p>
+                </div>
+            </div>
+            <div class="reveal bg-white/5 p-8 rounded-[40px] border border-white/10">
+                <h4 class="text-center font-bold mb-8 uppercase tracking-[0.2em] text-[10px] text-slate-500">Fast-Track Measurement</h4>
+                <div class="space-y-4">
+                    <div class="p-4 rounded-2xl bg-white/10 border border-white/10 hover:border-blue-500 transition-all cursor-pointer">
+                        <p class="font-bold">Standard Measurement</p>
+                        <p class="text-xs text-slate-400 italic">48hr Lead Time</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 opacity-50">
+                        <p class="font-bold">VIP Urgent (Fully Booked)</p>
+                    </div>
+                    <button class="w-full mt-6 bg-white text-slate-900 py-4 rounded-xl font-bold hover:bg-slate-200 transition-colors">Start My Quote</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 border-2 border-slate-900 flex items-center justify-center font-bold text-sm">M</div>
+            <span class="font-bold tracking-tight">MM Spray Works</span>
+        </div>
+        <div class="flex gap-10 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+            <span>Instagram</span>
+            <span>LinkedIn</span>
+            <span>&copy; 2026</span>
+        </div>
+        <div class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">
+            Powered by Frshbits
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const tl = gsap.timeline();
+            tl.to("#hero-tag", { opacity: 1, y: 0, duration: 1, ease: "power4.out" })
+              .to("#hero-title", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }, "-=0.8")
+              .to("#hero-para", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }, "-=1")
+              .to("#hero-btns", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }, "-=1");
+
+            gsap.utils.toArray(".reveal").forEach((elem) => {
+                if (elem.id && elem.id.startsWith("hero")) return;
+                gsap.to(elem, {
+                    opacity: 1, y: 0, duration: 1, ease: "power3.out",
+                    scrollTrigger: { trigger: elem, start: "top 90%", toggleActions: "play none none none" }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
