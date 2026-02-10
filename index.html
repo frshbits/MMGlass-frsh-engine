@@ -62,6 +62,32 @@
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .whatsapp-btn:hover { transform: scale(1.1) rotate(5deg); }
+
+        .surface-card img {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .surface-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Color expansion tray */
+        #ral-expansion {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #ral-expansion.active {
+            max-height: 600px;
+            opacity: 1;
+            margin-top: 2rem;
+        }
+        .swatch-btn {
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .swatch-btn:hover {
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-blue-100">
@@ -120,39 +146,79 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 gap-24 items-center">
                 <div class="reveal">
-                    <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-8 text-slate-900">Precision Colour Matching.</h2>
+                    <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-8 text-slate-900 text-balance">Precision Colour Matching.</h2>
                     <p class="text-slate-800 text-xl leading-relaxed mb-12 font-normal">
-                        We match any colour from leading manufacturers including <strong class="text-slate-950 font-bold underline decoration-blue-500/30">RAL, Farrow & Ball, Dulux, and Little Greene</strong>. Factory-standard finishes on wood, metal, glass, and plastic.
+                        We match any colour from leading manufacturers including <strong class="text-slate-950 font-bold underline decoration-blue-500/30">RAL, Farrow & Ball, Dulux, Paint & Paper Library, and Little Greene</strong>. Factory-standard finishes on wood, metal, glass, and plastic.
                     </p>
                     <div class="grid grid-cols-2 gap-5">
-                        <div class="p-8 rounded-3xl bg-white shadow-md border border-slate-200 group hover:border-slate-900 transition-colors">
-                            <div class="w-12 h-12 rounded-2xl bg-[#343d46] mb-6 shadow-lg"></div>
-                            <p class="font-bold text-lg text-slate-900">RAL 7016</p>
-                            <p class="text-[10px] text-slate-600 uppercase tracking-widest mt-1 font-bold">Anthracite Grey</p>
+                        <!-- RAL Card - INTERACTIVE -->
+                        <div id="ral-card" class="p-8 rounded-3xl bg-white shadow-md border-2 border-transparent hover:border-slate-900 transition-all cursor-pointer group col-span-2 md:col-span-1">
+                            <div class="flex justify-between items-start mb-6">
+                                <!-- Dynamic Main Swatch -->
+                                <div id="main-swatch" class="w-14 h-14 rounded-2xl bg-[#343d46] shadow-lg transition-colors duration-500"></div>
+                                <div id="expand-label" class="text-[10px] font-bold text-slate-400 group-hover:text-slate-900 transition-colors uppercase tracking-widest bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100">Explore Palettes</div>
+                            </div>
+                            <!-- Dynamic Text -->
+                            <h3 id="main-ral-code" class="font-bold text-2xl text-slate-900">RAL 7016</h3>
+                            <p id="main-ral-name" class="text-[11px] text-slate-600 uppercase tracking-widest mt-1 font-bold">Anthracite Grey</p>
+                            
+                            <!-- Hidden Expansion Tray (Selection Logic) -->
+                            <div id="ral-expansion" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                <button type="button" class="swatch-btn text-left focus:outline-none" data-hex="#8da399" data-ral="RAL 6021" data-name="Pale Green (Sage)">
+                                    <div class="w-full aspect-square rounded-xl bg-[#8da399] mb-2 border-2 border-white shadow-sm"></div>
+                                    <p class="text-[9px] font-bold text-slate-800">RAL 6021</p>
+                                </button>
+                                <button type="button" class="swatch-btn text-left focus:outline-none" data-hex="#1e293b" data-ral="RAL 5003" data-name="Midnight Blue">
+                                    <div class="w-full aspect-square rounded-xl bg-[#1e293b] mb-2 border-2 border-white shadow-sm"></div>
+                                    <p class="text-[9px] font-bold text-slate-800">RAL 5003</p>
+                                </button>
+                                <button type="button" class="swatch-btn text-left focus:outline-none" data-hex="#b45309" data-ral="RAL 8023" data-name="Orange Brown (Rust)">
+                                    <div class="w-full aspect-square rounded-xl bg-[#b45309] mb-2 border-2 border-white shadow-sm"></div>
+                                    <p class="text-[9px] font-bold text-slate-800">RAL 8023</p>
+                                </button>
+                                <button type="button" class="swatch-btn text-left focus:outline-none" data-hex="#bcbcbc" data-ral="RAL 7044" data-name="Silk Grey (Stone)">
+                                    <div class="w-full aspect-square rounded-xl bg-[#bcbcbc] mb-2 border-2 border-white shadow-sm"></div>
+                                    <p class="text-[9px] font-bold text-slate-800">RAL 7044</p>
+                                </button>
+                            </div>
                         </div>
-                        <div class="p-8 rounded-3xl bg-white shadow-md border border-slate-200 group hover:border-slate-900 transition-colors">
+
+                        <div class="p-8 rounded-3xl bg-white shadow-md border border-slate-200 group hover:border-slate-900 transition-colors hidden md:flex flex-col justify-center">
                             <div class="w-12 h-12 rounded-2xl bg-[#f1f0ea] mb-6 shadow-lg"></div>
-                            <p class="font-bold text-lg text-slate-900">Wimborne</p>
-                            <p class="text-[10px] text-slate-600 uppercase tracking-widest mt-1 font-bold">Farrow & Ball Match</p>
+                            <p class="font-bold text-lg text-slate-900">Wimborne Match</p>
+                            <p class="text-[10px] text-slate-600 uppercase tracking-widest mt-1 font-bold">Farrow & Ball Selection</p>
                         </div>
                     </div>
                 </div>
+                <!-- Surface Category Grid with Images -->
                 <div class="reveal grid grid-cols-2 gap-6">
-                    <div class="aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-8 text-center group shadow-md hover:shadow-lg transition-shadow">
-                        <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">🪵</span>
-                        <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">Wood & Joinery</h4>
+                    <!-- Wood -->
+                    <div class="surface-card aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-6 text-center shadow-md hover:shadow-lg transition-all overflow-hidden group">
+                        <div class="w-24 h-24 rounded-2xl overflow-hidden mb-6 shadow-sm border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1588345921523-c2dcd57f7dca?auto=format&fit=crop&q=80&w=400" alt="Wood Surface" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold uppercase tracking-widest text-[10px] md:text-xs text-slate-900">Wood & Joinery</h4>
                     </div>
-                    <div class="aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-8 text-center group shadow-md hover:shadow-lg transition-shadow">
-                        <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">⚙️</span>
-                        <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">Metal Surfaces</h4>
+                    <!-- Metal -->
+                    <div class="surface-card aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-6 text-center shadow-md hover:shadow-lg transition-all overflow-hidden group">
+                        <div class="w-24 h-24 rounded-2xl overflow-hidden mb-6 shadow-sm border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1533033512395-5853f587d15a?auto=format&fit=crop&q=80&w=400" alt="Metal Surface" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold uppercase tracking-widest text-[10px] md:text-xs text-slate-900">Metal Surfaces</h4>
                     </div>
-                    <div class="aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-8 text-center group shadow-md hover:shadow-lg transition-shadow">
-                        <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">💎</span>
-                        <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">Glass & Glaze</h4>
+                    <!-- Glass -->
+                    <div class="surface-card aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-6 text-center shadow-md hover:shadow-lg transition-all overflow-hidden group">
+                        <div class="w-24 h-24 rounded-2xl overflow-hidden mb-6 shadow-sm border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1533154683836-84ea7a0bc310?auto=format&fit=crop&q=80&w=400" alt="Glass Surface" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold uppercase tracking-widest text-[10px] md:text-xs text-slate-900">Glass</h4>
                     </div>
-                    <div class="aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-8 text-center group shadow-md hover:shadow-lg transition-shadow">
-                        <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">♻️</span>
-                        <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">uPVC & Plastic</h4>
+                    <!-- Plastic -->
+                    <div class="surface-card aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-6 text-center shadow-md hover:shadow-lg transition-all overflow-hidden group">
+                        <div class="w-24 h-24 rounded-2xl overflow-hidden mb-6 shadow-sm border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1596495573105-3156d6123d8a?auto=format&fit=crop&q=80&w=400" alt="Plastic Surface" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-bold uppercase tracking-widest text-[10px] md:text-xs text-slate-900">Plastic</h4>
                     </div>
                 </div>
             </div>
@@ -163,7 +229,7 @@
     <section id="quote" class="py-40 px-6">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-20 reveal">
-                <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 text-slate-900">Start My Quote</h2>
+                <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 text-slate-900 text-balance">Start My Quote</h2>
                 <p class="text-slate-800 text-xl font-normal mb-2">Tell us about your project.</p>
                 <p class="text-slate-600">Please fill in the boxes below and we'll respond within 24 hours.</p>
             </div>
@@ -222,8 +288,9 @@
             <span class="font-extrabold tracking-tighter text-sm uppercase text-slate-900">MM SPRAYWORKS</span>
         </div>
         <div class="flex gap-12 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-600">
-            <a href="https://www.mmglassandglaze.co.uk/" class="hover:text-black transition-colors">Main Glass Site</a>
+            <a href="#" class="hover:text-black transition-colors">Facebook</a>
             <a href="#" class="hover:text-black transition-colors">Instagram</a>
+            <a href="#" class="hover:text-black transition-colors">TikTok</a>
             <span>&copy; 2026</span>
         </div>
         <div class="text-[10px] font-bold text-slate-900 uppercase tracking-[0.5em]">
@@ -246,6 +313,50 @@
                 gsap.to(elem, {
                     opacity: 1, y: 0, duration: 1.2, ease: "power3.out",
                     scrollTrigger: { trigger: elem, start: "top 90%", toggleActions: "play none none none" }
+                });
+            });
+
+            // Handle RAL expansion interaction
+            const ralCard = document.getElementById('ral-card');
+            const ralExpansion = document.getElementById('ral-expansion');
+            const expandLabel = document.getElementById('expand-label');
+            const mainSwatch = document.getElementById('main-swatch');
+            const mainRalCode = document.getElementById('main-ral-code');
+            const mainRalName = document.getElementById('main-ral-name');
+            
+            // Toggle Expansion on card click (excluding swatch button clicks)
+            ralCard.addEventListener('click', (e) => {
+                // Check if we clicked a swatch button
+                if (e.target.closest('.swatch-btn')) return;
+                
+                ralExpansion.classList.toggle('active');
+                expandLabel.innerText = ralExpansion.classList.contains('active') ? 'Close Tray' : 'Explore Palettes';
+            });
+
+            // Handle individual Swatch selection
+            const swatches = document.querySelectorAll('.swatch-btn');
+            swatches.forEach(swatch => {
+                swatch.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent card from toggling closed
+                    
+                    const hex = swatch.getAttribute('data-hex');
+                    const ral = swatch.getAttribute('data-ral');
+                    const name = swatch.getAttribute('data-name');
+
+                    // Smooth update using GSAP
+                    gsap.to(mainSwatch, { 
+                        backgroundColor: hex, 
+                        duration: 0.5, 
+                        ease: "power2.out" 
+                    });
+                    
+                    // Simple text swap
+                    mainRalCode.innerText = ral;
+                    mainRalName.innerText = name;
+                    
+                    // Highlight the selected swatch (optional visual feedback)
+                    swatches.forEach(s => s.classList.remove('ring-2', 'ring-slate-900'));
+                    swatch.classList.add('ring-2', 'ring-slate-900', 'rounded-xl');
                 });
             });
         };
