@@ -3,182 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MM Spray Works | Bespoke Glass Splashbacks & Surface Design</title>
+    <title>MM Sprayworks | Bespoke Spray Finishing & Colour Matching</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; color: #0f172a; background-color: #fcfcfc; overflow-x: hidden; }
-        .reveal { opacity: 0; transform: translateY(30px); }
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.6); 
-            backdrop-filter: blur(12px); 
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.03);
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: #0f172a; /* Deep Slate for primary text */
+            background-color: #ffffff; 
+            overflow-x: hidden;
         }
-        .crystal-nav { 
-            background: rgba(255, 255, 255, 0.8); 
-            backdrop-filter: saturate(180%) blur(15px); 
+        .reveal { opacity: 0; transform: translateY(30px); }
+        .glass-nav { 
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: saturate(180%) blur(20px); 
         }
         .hero-mesh {
             background-color: #ffffff;
             background-image: radial-gradient(at 0% 0%, hsla(210,100%,98%,1) 0, transparent 50%), 
                               radial-gradient(at 100% 100%, hsla(200,100%,97%,1) 0, transparent 50%);
         }
-        .btn-glass {
-            background: #0f172a;
-            color: white;
+        .btn-primary {
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .btn-glass:hover {
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(15, 23, 42, 0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
         }
-        /* Glass selection effect */
-        .glass-slot {
-            transition: all 0.5s ease;
-            border: 2px solid transparent;
+        
+        /* Improved Form Field Identifiability */
+        .input-field {
+            @apply w-full px-6 py-5 rounded-2xl border-2 border-slate-100 focus:border-slate-900 focus:ring-8 focus:ring-slate-50 outline-none transition-all bg-slate-50/80 text-slate-900 placeholder:text-slate-400 font-medium shadow-inner;
         }
-        .glass-slot:hover {
-            border-color: #3b82f6;
-            background: rgba(59, 130, 246, 0.02);
+        .input-field:hover {
+            @apply border-slate-300 bg-slate-50;
         }
+        
+        /* WhatsApp Integration */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .whatsapp-btn:hover { transform: scale(1.1) rotate(5deg); }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased selection:bg-blue-100">
+
+    <!-- WhatsApp Floating Action -->
+    <a href="https://wa.me/442036339007" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 crystal-nav border-b border-slate-100">
+    <nav class="fixed w-full z-50 glass-nav border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 border-2 border-slate-900 flex items-center justify-center font-bold text-lg">M</div>
-                <span class="font-bold tracking-tight text-xl">MM Spray Works</span>
+            <div class="flex items-center gap-2">
+                <span class="font-extrabold tracking-tighter text-2xl uppercase text-slate-900">MM SPRAYWORKS</span>
             </div>
-            <div class="hidden md:flex items-center gap-10">
-                <a href="#services" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Surfaces</a>
-                <a href="#process" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Our Process</a>
-                <a href="#quote" class="bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-semibold btn-glass">Request Quote</a>
+            <div class="hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-700">
+                <a href="#matching" class="hover:text-black transition-colors">Colour Matching</a>
+                <a href="#quote" class="bg-black text-white px-7 py-2.5 rounded-full hover:bg-slate-800 transition-all shadow-sm normal-case tracking-normal">Start My Quote</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="min-h-screen flex items-center hero-mesh px-6 pt-20">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div class="z-10">
-                <div id="hero-tag" class="reveal inline-flex items-center gap-2 px-3 py-1 mb-6 text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase border border-slate-200 rounded">
-                    Artisan Surface Engineering
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 hero-mesh px-6 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="relative z-10 text-center lg:text-left">
+                <div id="hero-tag" class="reveal inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-[10px] font-bold tracking-[0.3em] text-blue-800 bg-blue-50 rounded-full uppercase border border-blue-200">
+                    Bespoke Spray Finishing
                 </div>
-                <h1 id="hero-title" class="reveal text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-8">
-                    Elevating interiors with <span class="text-slate-400">bespoke glass.</span>
+                <h1 id="hero-title" class="reveal text-6xl md:text-[90px] font-extrabold tracking-tighter leading-[0.9] mb-10 text-slate-900">
+                    Any Surface.<br/>
+                    <span class="text-slate-400">Any Colour.</span>
                 </h1>
-                <p id="hero-para" class="reveal text-lg text-slate-500 mb-10 leading-relaxed max-w-lg">
-                    MM Spray Works specializes in custom-coloured glass splashbacks and high-performance surface finishes for modern kitchens and commercial spaces.
+                <p id="hero-para" class="reveal text-lg md:text-xl text-slate-800 max-w-xl mb-12 leading-relaxed font-normal">
+                    Professional spray finishing and precision colour matching for kitchens, furniture, and architectural elements. Industrial-grade results on any substrate.
                 </p>
-                <div id="hero-btns" class="reveal flex flex-wrap gap-4">
-                    <a href="#quote" class="bg-slate-900 text-white px-10 py-4 rounded-xl font-bold text-lg btn-glass">Book Measurement</a>
-                    <a href="#services" class="bg-white border border-slate-200 text-slate-600 px-10 py-4 rounded-xl font-bold text-lg btn-glass">View Gallery</a>
+                <div id="hero-btns" class="reveal flex flex-col sm:flex-row justify-center lg:justify-start gap-5">
+                    <a href="#quote" class="bg-black text-white px-12 py-5 rounded-2xl font-bold text-lg btn-primary text-center">Start My Quote</a>
+                    <a href="https://wa.me/442036339007" class="bg-white border border-slate-300 text-slate-900 px-12 py-5 rounded-2xl font-bold text-lg btn-primary text-center flex items-center justify-center gap-2">
+                        WhatsApp Us
+                    </a>
                 </div>
             </div>
-            <div class="reveal relative">
-                <div class="aspect-square bg-slate-50 rounded-[60px] relative overflow-hidden shadow-2xl border border-white">
-                    <!-- Visual representation of layered glass -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 opacity-50"></div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 glass-card rounded-3xl p-8 flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <div class="h-1 w-20 bg-slate-900"></div>
-                            <p class="text-2xl font-bold text-slate-800">RAL 7016</p>
-                            <p class="text-slate-400 uppercase text-[10px] font-bold tracking-widest">Anthracite Grey Finish</p>
-                        </div>
-                        <div class="flex justify-between items-end">
-                            <div class="text-[10px] font-bold text-slate-400">TOUGHENED<br>6MM OPTIWHITE</div>
-                            <div class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-300">✦</div>
-                        </div>
-                    </div>
+            <div class="reveal relative hidden lg:block">
+                <div class="aspect-square bg-slate-50 rounded-[60px] relative overflow-hidden shadow-2xl border border-slate-200">
+                    <img src="https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&q=80&w=2070" 
+                         alt="Bespoke Finish" class="w-full h-full object-cover grayscale opacity-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services / System -->
-    <section id="services" class="py-32 px-6">
+    <!-- Colour Matching -->
+    <section id="matching" class="py-40 px-6 bg-slate-50/50">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-24 reveal">
-                <h2 class="text-4xl font-bold tracking-tight mb-4">Precision-crafted surfaces.</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto">From heat-resistant kitchen splashbacks to branded commercial glass, we provide a finish that is both beautiful and indestructible.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="reveal glass-card p-10 rounded-[40px] glass-slot">
-                    <div class="text-3xl mb-6">🍳</div>
-                    <h3 class="text-xl font-bold mb-3">Kitchen Splashbacks</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Toughened safety glass matched to any RAL, Farrow & Ball, or Dulux colour.</p>
+            <div class="grid md:grid-cols-2 gap-24 items-center">
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-8 text-slate-900">Precision Colour Matching.</h2>
+                    <p class="text-slate-800 text-xl leading-relaxed mb-12 font-normal">
+                        We match any colour from leading manufacturers including <strong class="text-slate-950 font-bold underline decoration-blue-500/30">RAL, Farrow & Ball, Dulux, and Little Greene</strong>. Factory-standard finishes on wood, metal, glass, and plastic.
+                    </p>
+                    <div class="grid grid-cols-2 gap-5">
+                        <div class="p-8 rounded-3xl bg-white shadow-md border border-slate-200 group hover:border-slate-900 transition-colors">
+                            <div class="w-12 h-12 rounded-2xl bg-[#343d46] mb-6 shadow-lg"></div>
+                            <p class="font-bold text-lg text-slate-900">RAL 7016</p>
+                            <p class="text-[10px] text-slate-600 uppercase tracking-widest mt-1 font-bold">Anthracite Grey</p>
+                        </div>
+                        <div class="p-8 rounded-3xl bg-white shadow-md border border-slate-200 group hover:border-slate-900 transition-colors">
+                            <div class="w-12 h-12 rounded-2xl bg-[#f1f0ea] mb-6 shadow-lg"></div>
+                            <p class="font-bold text-lg text-slate-900">Wimborne</p>
+                            <p class="text-[10px] text-slate-600 uppercase tracking-widest mt-1 font-bold">Farrow & Ball Match</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="reveal glass-card p-10 rounded-[40px] glass-slot">
-                    <div class="text-3xl mb-6">🏢</div>
-                    <h3 class="text-xl font-bold mb-3">Commercial Finishes</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Branded glass wall cladding for offices, hotels, and retail environments.</p>
-                </div>
-                <div class="reveal glass-card p-10 rounded-[40px] glass-slot">
-                    <div class="text-3xl mb-6">🛠️</div>
-                    <h3 class="text-xl font-bold mb-3">Bespoke Spraying</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Expert surface coating for furniture, cabinetry, and architectural elements.</p>
+                <div class="reveal grid grid-cols-2 gap-6">
+                    <div class="aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-8 text-center group shadow-md hover:shadow-lg transition-shadow">
+                        <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">🪵</span>
+                        <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">Wood & Joinery</h4>
+                    </div>
+                    <div class="aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-8 text-center group shadow-md hover:shadow-lg transition-shadow">
+                        <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">⚙️</span>
+                        <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">Metal Surfaces</h4>
+                    </div>
+                    <div class="aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-8 text-center group shadow-md hover:shadow-lg transition-shadow">
+                        <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">💎</span>
+                        <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">Glass & Glaze</h4>
+                    </div>
+                    <div class="aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-8 text-center group shadow-md hover:shadow-lg transition-shadow">
+                        <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">♻️</span>
+                        <h4 class="font-bold uppercase tracking-widest text-xs text-slate-900">uPVC & Plastic</h4>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Measurement Booking (The System) -->
-    <section id="quote" class="py-32 bg-slate-900 text-white rounded-[60px] mx-6 mb-6">
-        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-            <div class="reveal">
-                <h2 class="text-5xl font-bold tracking-tight mb-8">Ready to transform your space?</h2>
-                <p class="text-slate-400 text-lg mb-10 leading-relaxed">
-                    Book a laser-precision measurement session. Our technician will visit, provide sample swatches, and give you an instant quote.
-                </p>
-                <div class="flex items-center gap-6">
-                    <div class="flex -space-x-4">
-                        <div class="w-12 h-12 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center">👤</div>
-                        <div class="w-12 h-12 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center">👤</div>
-                        <div class="w-12 h-12 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center">👤</div>
-                    </div>
-                    <p class="text-sm font-medium text-slate-300">12 Appointments booked this week</p>
-                </div>
+    <!-- Quote Form -->
+    <section id="quote" class="py-40 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter mb-8 text-slate-900">Start My Quote</h2>
+                <p class="text-slate-800 text-xl font-normal mb-2">Tell us about your project.</p>
+                <p class="text-slate-600">Please fill in the boxes below and we'll respond within 24 hours.</p>
             </div>
-            <div class="reveal bg-white/5 p-8 rounded-[40px] border border-white/10">
-                <h4 class="text-center font-bold mb-8 uppercase tracking-[0.2em] text-[10px] text-slate-500">Fast-Track Measurement</h4>
-                <div class="space-y-4">
-                    <div class="p-4 rounded-2xl bg-white/10 border border-white/10 hover:border-blue-500 transition-all cursor-pointer">
-                        <p class="font-bold">Standard Measurement</p>
-                        <p class="text-xs text-slate-400 italic">48hr Lead Time</p>
+            
+            <form name="quote-request" method="POST" data-netlify="true" class="reveal bg-white border border-slate-100 p-8 md:p-16 rounded-[50px] shadow-2xl shadow-slate-200/50">
+                <div class="grid md:grid-cols-2 gap-10 mb-10">
+                    <div>
+                        <label class="text-[12px] font-bold uppercase tracking-widest text-slate-900 mb-4 block ml-2">Full Name</label>
+                        <input type="text" name="name" required class="input-field" placeholder="John Doe">
                     </div>
-                    <div class="p-4 rounded-2xl bg-white/5 border border-white/10 opacity-50">
-                        <p class="font-bold">VIP Urgent (Fully Booked)</p>
+                    <div>
+                        <label class="text-[12px] font-bold uppercase tracking-widest text-slate-900 mb-4 block ml-2">Phone Number</label>
+                        <input type="tel" name="phone" required class="input-field" placeholder="020 3633 9007">
                     </div>
-                    <button class="w-full mt-6 bg-white text-slate-900 py-4 rounded-xl font-bold hover:bg-slate-200 transition-colors">Start My Quote</button>
                 </div>
+                <div class="mb-10">
+                    <label class="text-[12px] font-bold uppercase tracking-widest text-slate-900 mb-4 block ml-2">Email Address</label>
+                    <input type="email" name="email" required class="input-field" placeholder="mmsprayworks@icloud.com">
+                </div>
+                <div class="mb-12">
+                    <label class="text-[12px] font-bold uppercase tracking-widest text-slate-900 mb-4 block ml-2">Project Description</label>
+                    <textarea name="message" rows="5" required class="input-field" placeholder="e.g. Respraying 15 kitchen cabinet doors in Farrow & Ball Hague Blue..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-black text-white py-6 rounded-3xl font-bold text-xl btn-primary">Submit My Quote Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Details Grid -->
+    <section class="py-32 bg-slate-900 px-6 border-y border-white/5">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-20">
+            <div class="reveal">
+                <h5 class="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-400 mb-8">Studio Address</h5>
+                <p class="text-2xl font-bold tracking-tight text-white leading-tight">
+                    Unit 15, 19 Bernard Rd<br/>
+                    South Tottenham, London<br/>
+                    N15 4NE
+                </p>
+            </div>
+            <div class="reveal">
+                <h5 class="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-400 mb-8">Contact Direct</h5>
+                <p class="text-2xl font-bold tracking-tight text-white">020 3633 9007</p>
+                <p class="text-lg text-slate-400 font-normal mt-2 uppercase tracking-tight">MMSPRAYWORKS@ICLOUD.COM</p>
+            </div>
+            <div class="reveal">
+                <h5 class="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-400 mb-8">Studio Hours</h5>
+                <p class="text-2xl font-bold tracking-tight text-white">Mon - Fri &nbsp; 8am – 5pm</p>
+                <p class="text-sm text-slate-500 mt-4 uppercase tracking-widest font-bold">Closed Weekends</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 px-6 max-w-7xl mx-auto border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
-        <div class="flex items-center gap-3">
-            <div class="w-8 h-8 border-2 border-slate-900 flex items-center justify-center font-bold text-sm">M</div>
-            <span class="font-bold tracking-tight">MM Spray Works</span>
+    <footer class="py-16 px-6 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+        <div class="flex items-center gap-2">
+            <span class="font-extrabold tracking-tighter text-sm uppercase text-slate-900">MM SPRAYWORKS</span>
         </div>
-        <div class="flex gap-10 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-            <span>Instagram</span>
-            <span>LinkedIn</span>
+        <div class="flex gap-12 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-600">
+            <a href="https://www.mmglassandglaze.co.uk/" class="hover:text-black transition-colors">Main Glass Site</a>
+            <a href="#" class="hover:text-black transition-colors">Instagram</a>
             <span>&copy; 2026</span>
         </div>
-        <div class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">
-            Powered by Frshbits
+        <div class="text-[10px] font-bold text-slate-900 uppercase tracking-[0.5em]">
+            FRSHBITS SYSTEMS
         </div>
     </footer>
 
     <script>
-        window.addEventListener('load', function() {
+        window.onload = function() {
             gsap.registerPlugin(ScrollTrigger);
 
             const tl = gsap.timeline();
@@ -190,11 +244,11 @@
             gsap.utils.toArray(".reveal").forEach((elem) => {
                 if (elem.id && elem.id.startsWith("hero")) return;
                 gsap.to(elem, {
-                    opacity: 1, y: 0, duration: 1, ease: "power3.out",
+                    opacity: 1, y: 0, duration: 1.2, ease: "power3.out",
                     scrollTrigger: { trigger: elem, start: "top 90%", toggleActions: "play none none none" }
                 });
             });
-        });
+        };
     </script>
 </body>
 </html>
