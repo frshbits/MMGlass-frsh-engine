@@ -18,7 +18,10 @@
             background-color: #ffffff; 
             overflow-x: hidden;
         }
-        .reveal { opacity: 0; transform: translateY(30px); }
+        
+        /* FIX: Removed opacity: 0 to prevent permanent invisible content if JS fails */
+        .reveal { transform: translateY(0); } 
+        
         .glass-nav { 
             background: rgba(255, 255, 255, 0.9); 
             backdrop-filter: saturate(180%) blur(20px); 
@@ -133,8 +136,10 @@
             </div>
             <div class="reveal relative hidden lg:block">
                 <div class="aspect-square bg-slate-50 rounded-[60px] relative overflow-hidden shadow-2xl border border-slate-200">
-                    <img src="https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&q=80&w=2070" 
-                         alt="Bespoke Finish" class="w-full h-full object-cover grayscale opacity-90">
+                    <!-- IMAGE LINK: ./images/hero-spray.jpg -->
+                    <img src="./images/hero-spray.jpg" 
+                         alt="Bespoke Finish" class="w-full h-full object-cover grayscale opacity-90"
+                         onerror="this.src='https://images.unsplash.com/photo-1595844730298-b960ff98fee0?auto=format&fit=crop&q=80&w=2070'">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
             </div>
@@ -195,28 +200,32 @@
                     <!-- Wood -->
                     <div class="surface-card aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-6 text-center shadow-md hover:shadow-lg transition-all overflow-hidden group">
                         <div class="w-24 h-24 rounded-2xl overflow-hidden mb-6 shadow-sm border border-slate-100">
-                            <img src="https://images.unsplash.com/photo-1588345921523-c2dcd57f7dca?auto=format&fit=crop&q=80&w=400" alt="Wood Surface" class="w-full h-full object-cover">
+                            <!-- IMAGE LINK: ./images/surface-wood.jpg -->
+                            <img src="./images/surface-wood.jpg" alt="Wood Surface" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1588345921523-c2dcd57f7dca?auto=format&fit=crop&q=80&w=400'">
                         </div>
                         <h4 class="font-bold uppercase tracking-widest text-[10px] md:text-xs text-slate-900">Wood & Joinery</h4>
                     </div>
                     <!-- Metal -->
                     <div class="surface-card aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-6 text-center shadow-md hover:shadow-lg transition-all overflow-hidden group">
                         <div class="w-24 h-24 rounded-2xl overflow-hidden mb-6 shadow-sm border border-slate-100">
-                            <img src="https://images.unsplash.com/photo-1533033512395-5853f587d15a?auto=format&fit=crop&q=80&w=400" alt="Metal Surface" class="w-full h-full object-cover">
+                            <!-- IMAGE LINK: ./images/surface-metal.jpg -->
+                            <img src="./images/surface-metal.jpg" alt="Metal Surface" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1533033512395-5853f587d15a?auto=format&fit=crop&q=80&w=400'">
                         </div>
                         <h4 class="font-bold uppercase tracking-widest text-[10px] md:text-xs text-slate-900">Metal Surfaces</h4>
                     </div>
                     <!-- Glass -->
                     <div class="surface-card aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-6 text-center shadow-md hover:shadow-lg transition-all overflow-hidden group">
                         <div class="w-24 h-24 rounded-2xl overflow-hidden mb-6 shadow-sm border border-slate-100">
-                            <img src="https://images.unsplash.com/photo-1533154683836-84ea7a0bc310?auto=format&fit=crop&q=80&w=400" alt="Glass Surface" class="w-full h-full object-cover">
+                            <!-- IMAGE LINK: ./images/surface-glass.jpg -->
+                            <img src="./images/surface-glass.jpg" alt="Glass Surface" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1533154683836-84ea7a0bc310?auto=format&fit=crop&q=80&w=400'">
                         </div>
                         <h4 class="font-bold uppercase tracking-widest text-[10px] md:text-xs text-slate-900">Glass</h4>
                     </div>
                     <!-- Plastic -->
                     <div class="surface-card aspect-square rounded-[40px] bg-white border border-slate-200 flex flex-col items-center justify-center p-6 text-center shadow-md hover:shadow-lg transition-all overflow-hidden group">
                         <div class="w-24 h-24 rounded-2xl overflow-hidden mb-6 shadow-sm border border-slate-100">
-                            <img src="https://images.unsplash.com/photo-1596495573105-3156d6123d8a?auto=format&fit=crop&q=80&w=400" alt="Plastic Surface" class="w-full h-full object-cover">
+                            <!-- IMAGE LINK: ./images/surface-plastic.jpg -->
+                            <img src="./images/surface-plastic.jpg" alt="Plastic Surface" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1596495573105-3156d6123d8a?auto=format&fit=crop&q=80&w=400'">
                         </div>
                         <h4 class="font-bold uppercase tracking-widest text-[10px] md:text-xs text-slate-900">Plastic</h4>
                     </div>
@@ -283,83 +292,102 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-16 px-6 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-        <div class="flex items-center gap-2">
+    <footer class="py-16 px-6 max-w-7xl mx-auto text-center border-t border-slate-100">
+        <!-- Brand -->
+        <div class="mb-10">
             <span class="font-extrabold tracking-tighter text-sm uppercase text-slate-900">MM SPRAYWORKS</span>
         </div>
-        <div class="flex gap-12 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-600">
+        
+        <!-- Social Links (Line 1) -->
+        <div class="flex justify-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-700 mb-6">
             <a href="#" class="hover:text-black transition-colors">Facebook</a>
             <a href="#" class="hover:text-black transition-colors">Instagram</a>
             <a href="#" class="hover:text-black transition-colors">TikTok</a>
-            <span>&copy; 2026</span>
         </div>
-        <div class="text-[10px] font-bold text-slate-900 uppercase tracking-[0.5em]">
-            FRSHBITS SYSTEMS
+        
+        <!-- Agency & Copyright (Line 2) -->
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-[10px] font-bold text-slate-900 uppercase tracking-[0.5em]">
+            <span>&copy; 2026</span>
+            <span class="hidden md:block text-slate-200">|</span>
+            <span>FRSHBITS SYSTEMS</span>
         </div>
     </footer>
 
     <script>
-        window.onload = function() {
-            gsap.registerPlugin(ScrollTrigger);
+        // Use DOMContentLoaded for faster execution
+        document.addEventListener("DOMContentLoaded", (event) => {
+            if (typeof gsap !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
 
-            const tl = gsap.timeline();
-            tl.to("#hero-tag", { opacity: 1, y: 0, duration: 1, ease: "power4.out" })
-              .to("#hero-title", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }, "-=0.8")
-              .to("#hero-para", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }, "-=1")
-              .to("#hero-btns", { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }, "-=1");
-
-            gsap.utils.toArray(".reveal").forEach((elem) => {
-                if (elem.id && elem.id.startsWith("hero")) return;
-                gsap.to(elem, {
-                    opacity: 1, y: 0, duration: 1.2, ease: "power3.out",
-                    scrollTrigger: { trigger: elem, start: "top 90%", toggleActions: "play none none none" }
-                });
-            });
-
-            // Handle RAL expansion interaction
-            const ralCard = document.getElementById('ral-card');
-            const ralExpansion = document.getElementById('ral-expansion');
-            const expandLabel = document.getElementById('expand-label');
-            const mainSwatch = document.getElementById('main-swatch');
-            const mainRalCode = document.getElementById('main-ral-code');
-            const mainRalName = document.getElementById('main-ral-name');
-            
-            // Toggle Expansion on card click (excluding swatch button clicks)
-            ralCard.addEventListener('click', (e) => {
-                // Check if we clicked a swatch button
-                if (e.target.closest('.swatch-btn')) return;
+                // Animate FROM hidden state instead of waiting for CSS to show it
+                // This ensures content is visible if JS fails/is slow (Progressive Enhancement)
                 
-                ralExpansion.classList.toggle('active');
-                expandLabel.innerText = ralExpansion.classList.contains('active') ? 'Close Tray' : 'Explore Palettes';
-            });
+                const tl = gsap.timeline();
+                tl.from("#hero-tag", { opacity: 0, y: 30, duration: 1, ease: "power4.out" })
+                  .from("#hero-title", { opacity: 0, y: 30, duration: 1.2, ease: "power4.out" }, "-=0.8")
+                  .from("#hero-para", { opacity: 0, y: 30, duration: 1.2, ease: "power4.out" }, "-=1")
+                  .from("#hero-btns", { opacity: 0, y: 30, duration: 1.2, ease: "power4.out" }, "-=1");
 
-            // Handle individual Swatch selection
-            const swatches = document.querySelectorAll('.swatch-btn');
-            swatches.forEach(swatch => {
-                swatch.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent card from toggling closed
+                gsap.utils.toArray(".reveal").forEach((elem) => {
+                    // Skip hero elements we just animated
+                    if (elem.id && elem.id.startsWith("hero")) return;
                     
-                    const hex = swatch.getAttribute('data-hex');
-                    const ral = swatch.getAttribute('data-ral');
-                    const name = swatch.getAttribute('data-name');
-
-                    // Smooth update using GSAP
-                    gsap.to(mainSwatch, { 
-                        backgroundColor: hex, 
-                        duration: 0.5, 
-                        ease: "power2.out" 
+                    gsap.from(elem, {
+                        opacity: 0, 
+                        y: 30, 
+                        duration: 1.2, 
+                        ease: "power3.out",
+                        scrollTrigger: { 
+                            trigger: elem, 
+                            start: "top 90%", 
+                            toggleActions: "play none none none" 
+                        }
                     });
-                    
-                    // Simple text swap
-                    mainRalCode.innerText = ral;
-                    mainRalName.innerText = name;
-                    
-                    // Highlight the selected swatch (optional visual feedback)
-                    swatches.forEach(s => s.classList.remove('ring-2', 'ring-slate-900'));
-                    swatch.classList.add('ring-2', 'ring-slate-900', 'rounded-xl');
                 });
-            });
-        };
+
+                // Handle RAL expansion interaction
+                const ralCard = document.getElementById('ral-card');
+                const ralExpansion = document.getElementById('ral-expansion');
+                const expandLabel = document.getElementById('expand-label');
+                const mainSwatch = document.getElementById('main-swatch');
+                const mainRalCode = document.getElementById('main-ral-code');
+                const mainRalName = document.getElementById('main-ral-name');
+                
+                if (ralCard && ralExpansion) {
+                    // Toggle Expansion on card click
+                    ralCard.addEventListener('click', (e) => {
+                        if (e.target.closest('.swatch-btn')) return;
+                        
+                        ralExpansion.classList.toggle('active');
+                        expandLabel.innerText = ralExpansion.classList.contains('active') ? 'Close Tray' : 'Explore Palettes';
+                    });
+
+                    // Handle individual Swatch selection
+                    const swatches = document.querySelectorAll('.swatch-btn');
+                    swatches.forEach(swatch => {
+                        swatch.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            
+                            const hex = swatch.getAttribute('data-hex');
+                            const ral = swatch.getAttribute('data-ral');
+                            const name = swatch.getAttribute('data-name');
+
+                            gsap.to(mainSwatch, { 
+                                backgroundColor: hex, 
+                                duration: 0.5, 
+                                ease: "power2.out" 
+                            });
+                            
+                            mainRalCode.innerText = ral;
+                            mainRalName.innerText = name;
+                            
+                            swatches.forEach(s => s.classList.remove('ring-2', 'ring-slate-900'));
+                            swatch.classList.add('ring-2', 'ring-slate-900', 'rounded-xl');
+                        });
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>
