@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
         
-        /* Ensure content is visible by default so UI loads even if JS is delayed */
         .reveal { opacity: 1; transform: translateY(0); } 
         
         .glass-nav { 
@@ -39,7 +38,7 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.12);
         }
         
-        /* Standard CSS for Inputs (No @apply) */
+        /* Standard CSS for Inputs */
         .input-field {
             width: 100%;
             padding: 1.25rem 1.5rem;
@@ -109,7 +108,7 @@
             opacity: 1;
         }
 
-        /* Updated Palette Expansion Styles */
+        /* Palette Expansion Styles */
         .palette-expansion {
             max-height: 0;
             opacity: 0;
@@ -119,7 +118,7 @@
             border-top-width: 0;
         }
         .palette-card.active .palette-expansion {
-            max-height: 200px; /* Sufficient height for the grid */
+            max-height: 200px;
             opacity: 1;
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -260,17 +259,17 @@
                     <div class="palette-card p-8 rounded-3xl bg-white shadow-sm border border-slate-200 h-fit">
                         <div class="flex justify-between items-start">
                             <div>
-                                <div class="w-14 h-14 rounded-2xl bg-[#d4dce1] shadow-lg mb-6"></div>
+                                <div class="w-14 h-14 rounded-2xl bg-[#f0c952] shadow-lg mb-6"></div>
                                 <h3 class="font-bold text-2xl text-slate-900">Dulux</h3>
-                                <p class="text-[11px] text-slate-600 uppercase tracking-widest mt-1 font-bold">Polished Pebble</p>
+                                <p class="text-[11px] text-slate-600 uppercase tracking-widest mt-1 font-bold">Honey Beam</p>
                             </div>
                             <div class="w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center toggle-icon text-slate-400">↓</div>
                         </div>
                         <div class="palette-expansion grid grid-cols-4 gap-2 border-t border-slate-50">
-                            <div class="aspect-square rounded-lg bg-[#d4dce1]" title="Pebble"></div>
-                            <div class="aspect-square rounded-lg bg-[#2a3c54]" title="Oxford"></div>
-                            <div class="aspect-square rounded-lg bg-[#e3d7cd]" title="Pink"></div>
-                            <div class="aspect-square rounded-lg bg-[#68735e]" title="Olive"></div>
+                            <div class="aspect-square rounded-lg bg-[#f0c952]" title="Honey Beam"></div>
+                            <div class="aspect-square rounded-lg bg-[#e05a48]" title="Pepper Red"></div>
+                            <div class="aspect-square rounded-lg bg-[#2b88bf]" title="Sapphire"></div>
+                            <div class="aspect-square rounded-lg bg-[#7ab855]" title="Kiwi"></div>
                         </div>
                     </div>
 
@@ -278,17 +277,17 @@
                     <div class="palette-card p-8 rounded-3xl bg-white shadow-sm border border-slate-200 h-fit">
                         <div class="flex justify-between items-start">
                             <div>
-                                <div class="w-14 h-14 rounded-2xl bg-[#232937] shadow-lg mb-6"></div>
+                                <div class="w-14 h-14 rounded-2xl bg-[#a84d57] shadow-lg mb-6"></div>
                                 <h3 class="font-bold text-2xl text-slate-900">Paint & Paper</h3>
-                                <p class="text-[11px] text-slate-600 uppercase tracking-widest mt-1 font-bold">Blue Blood</p>
+                                <p class="text-[11px] text-slate-600 uppercase tracking-widest mt-1 font-bold">Rhubarb</p>
                             </div>
                             <div class="w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center toggle-icon text-slate-400">↓</div>
                         </div>
                         <div class="palette-expansion grid grid-cols-4 gap-2 border-t border-slate-50">
+                            <div class="aspect-square rounded-lg bg-[#a84d57]" title="Rhubarb"></div>
+                            <div class="aspect-square rounded-lg bg-[#e6c35c]" title="Chinese Emperor"></div>
+                            <div class="aspect-square rounded-lg bg-[#4b665c]" title="Hunter Dunn"></div>
                             <div class="aspect-square rounded-lg bg-[#232937]" title="Blue Blood"></div>
-                            <div class="aspect-square rounded-lg bg-[#4a4a4a]" title="Squid Ink"></div>
-                            <div class="aspect-square rounded-lg bg-[#b0a99f]" title="Stone"></div>
-                            <div class="aspect-square rounded-lg bg-[#f0eee9]" title="Clean White"></div>
                         </div>
                     </div>
 
@@ -311,7 +310,6 @@
                     <div class="carousel-slide active">
                         <img src="images/carousel-wood.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1588345921523-c2dcd57f7dca?auto=format&fit=crop&q=80&w=800'">
                         <div class="carousel-caption">
-                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1 block">Substrate 01</span>
                             <h4 class="text-xl font-bold text-slate-900">Wood & Joinery</h4>
                         </div>
                     </div>
@@ -319,15 +317,13 @@
                     <div class="carousel-slide">
                         <img src="images/carousel-metal.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1533033512395-5853f587d15a?auto=format&fit=crop&q=80&w=800'">
                         <div class="carousel-caption">
-                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1 block">Substrate 02</span>
-                            <h4 class="text-xl font-bold text-slate-900">Metal Surfaces</h4>
+                            <h4 class="text-xl font-bold text-slate-900">Liquid Metal Finishes</h4>
                         </div>
                     </div>
                     <!-- Slide 3: Glass -->
                     <div class="carousel-slide">
                         <img src="images/carousel-glass.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1533154683836-84ea7a0bc310?auto=format&fit=crop&q=80&w=800'">
                         <div class="carousel-caption">
-                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1 block">Substrate 03</span>
                             <h4 class="text-xl font-bold text-slate-900">Glass</h4>
                         </div>
                     </div>
@@ -335,7 +331,6 @@
                     <div class="carousel-slide">
                         <img src="images/carousel-plastic.jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1596495573105-3156d6123d8a?auto=format&fit=crop&q=80&w=800'">
                         <div class="carousel-caption">
-                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-1 block">Substrate 04</span>
                             <h4 class="text-xl font-bold text-slate-900">Plastic</h4>
                         </div>
                     </div>
@@ -354,7 +349,7 @@
                 <p class="text-slate-600">Please fill in the boxes below and we'll respond within 24 hours.</p>
             </div>
             
-            <form name="quote-request" method="POST" data-netlify="true" class="reveal bg-white border border-slate-100 p-8 md:p-16 rounded-[50px] shadow-2xl shadow-slate-200/50">
+            <form name="quote-request" method="POST" data-netlify="true" enctype="multipart/form-data" class="reveal bg-white border border-slate-100 p-8 md:p-16 rounded-[50px] shadow-2xl shadow-slate-200/50">
                 <div class="grid md:grid-cols-2 gap-10 mb-10">
                     <div>
                         <label class="text-[12px] font-bold uppercase tracking-widest text-slate-900 mb-4 block ml-2">Full Name</label>
@@ -369,10 +364,25 @@
                     <label class="text-[12px] font-bold uppercase tracking-widest text-slate-900 mb-4 block ml-2">Email Address</label>
                     <input type="email" name="email" required class="input-field" placeholder="mmsprayworks@icloud.com">
                 </div>
-                <div class="mb-12">
+                <div class="mb-10">
                     <label class="text-[12px] font-bold uppercase tracking-widest text-slate-900 mb-4 block ml-2">Project Description</label>
                     <textarea name="message" rows="5" required class="input-field" placeholder="e.g. Respraying 15 kitchen cabinet doors in Farrow & Ball Hague Blue..."></textarea>
                 </div>
+                
+                <!-- File Upload Section -->
+                <div class="mb-12">
+                    <label class="text-[12px] font-bold uppercase tracking-widest text-slate-900 mb-4 block ml-2">Upload Photos (Optional)</label>
+                    <input type="file" name="attachment" multiple 
+                        class="block w-full text-sm text-slate-500
+                        file:mr-5 file:py-4 file:px-8
+                        file:rounded-xl file:border-0
+                        file:text-xs file:font-bold file:uppercase file:tracking-widest
+                        file:bg-slate-900 file:text-white
+                        hover:file:bg-slate-800
+                        cursor-pointer bg-slate-50/50 rounded-2xl border-2 border-slate-100 p-2 transition-all"
+                    />
+                </div>
+
                 <button type="submit" class="w-full bg-black text-white py-6 rounded-3xl font-bold text-xl btn-primary">Submit My Quote Request</button>
             </form>
         </div>
@@ -392,7 +402,9 @@
             <div class="reveal">
                 <h5 class="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-400 mb-8">Contact Direct</h5>
                 <p class="text-2xl font-bold tracking-tight text-white">020 3633 9007</p>
-                <p class="text-lg text-slate-400 font-normal mt-2 uppercase tracking-tight">MMSPRAYWORKS@ICLOUD.COM</p>
+                <a href="mailto:MMSPRAYWORKS@ICLOUD.COM" class="inline-block mt-4 bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all border border-slate-700 hover:border-slate-500">
+                    EMAIL US NOW
+                </a>
             </div>
             <div class="reveal">
                 <h5 class="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-400 mb-8">Studio Hours</h5>
@@ -409,7 +421,7 @@
         </div>
         
         <div class="flex justify-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-700 mb-6">
-            <a href="https://www.facebook.com/MMGlassLondon" target="_blank" class="hover:text-black transition-colors">Facebook</a>
+            <a href="https://www.facebook.com/MMSPRAYWORKSUK?ref=1" target="_blank" class="hover:text-black transition-colors">Facebook</a>
             <a href="https://www.instagram.com/mmsprayworks/?hl=en" target="_blank" class="hover:text-black transition-colors">Instagram</a>
             <a href="https://www.tiktok.com/@mmsprayworks?_r=1&_t=ZN-93rjL1bTiMA" target="_blank" class="hover:text-black transition-colors">TikTok</a>
         </div>
@@ -440,18 +452,24 @@
                     });
                 });
 
-                // Carousel Logic
+                // Carousel Logic with Safety Checks
                 const slides = document.querySelectorAll('.carousel-slide');
                 if (slides.length > 0) {
                     let currentSlide = 0;
 
                     function nextSlide() {
-                        slides[currentSlide].classList.remove('active');
+                        if(slides[currentSlide]) {
+                            slides[currentSlide].classList.remove('active');
+                        }
+                        
                         currentSlide = (currentSlide + 1) % slides.length;
-                        slides[currentSlide].classList.add('active');
+                        
+                        if(slides[currentSlide]) {
+                            slides[currentSlide].classList.add('active');
+                        }
                     }
 
-                    setInterval(nextSlide, 3500); // 3.5s Rotation
+                    setInterval(nextSlide, 3500); 
                 }
 
                 // Palette Accordion Logic
@@ -459,7 +477,7 @@
                 
                 paletteCards.forEach(card => {
                     card.addEventListener('click', () => {
-                        // Optional: Close others when one opens (Accordion style)
+                        // To allow only one open at a time, uncomment below:
                         // paletteCards.forEach(c => {
                         //     if (c !== card) c.classList.remove('active');
                         // });
