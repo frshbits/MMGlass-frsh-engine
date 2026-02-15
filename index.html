@@ -350,6 +350,9 @@
             </div>
             
             <form name="quote-request" method="POST" data-netlify="true" enctype="multipart/form-data" class="reveal bg-white border border-slate-100 p-8 md:p-16 rounded-[50px] shadow-2xl shadow-slate-200/50">
+                <!-- IMPORTANT: This hidden input is required for Netlify to detect the form name -->
+                <input type="hidden" name="form-name" value="quote-request" />
+                
                 <div class="grid md:grid-cols-2 gap-10 mb-10">
                     <div>
                         <label class="text-[12px] font-bold uppercase tracking-widest text-slate-900 mb-4 block ml-2">Full Name</label>
